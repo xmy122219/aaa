@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script src="js/jquery-2.1.4.min.js" type="text/javascript" charset="utf-8"></script>
+	    <style type="text/css">
+	    	*{padding: 0;margin: 0;list-style: none;}
+	    	html{font-family: "楷体";}
+	    	h1{text-align: center;margin-top: 20px;}
+	    	.wrap_a,.wrap_b{
+	    		width: 70%;
+	    		background: #F3F8FD;
+	    		border: 1px solid cornflowerblue;
+	    		padding: 20px;box-sizing: border-box;
+	    		margin: 20px auto;
+	    		}
+	    	textarea{
+	    		width: 100%;
+	    		height: 95px;
+	    		margin-bottom: 15px;
+	    		font-size: 18px;
+	    	}
+	    	.wrap_a div,.wrap_b>div{width: 100%;overflow: hidden;}
+	    	#submit{
+	    		width: 90px;height: 28px;
+	    		border: none;outline: none;
+	    		float: right;
+	    		background-image: url(img/takeSbmComment.png);
+	    		background-size: 100%;
+	    	}
+	    	#liuyan{width: 70%;margin: 0 auto;}
+	    	.wrap_b{margin: 10px auto;margin-bottom: 0;}
+	    	#q>.float{float: right;display: flex;}
+	    	.add{
+	    		background: white;
+	    		font-size: 25px;
+	    	    padding: 10px;box-sizing: border-box;
+	    	    margin-bottom: 10px;
+	    	    }
+	    	.time{color: darkgray;line-height: 20px;font-size: 16px;}
+	    	.img1,.img2,.img3{
+	    		width: 16px;height: 18px;
+	    		margin-left: 10px;
+	    	    background-image: url(img/icons.png);
+	    	    }
+	    	.img2{background-position-y: -16px;}
+	    	.img3{background-position-y: 18px;}
+	    	.delete{
+	    		color: red;font-size: 16px;
+	    	}
+	    </style>
+	</head>
+	<body>
+		<h1>Ta的留言板</h1>
+		<!--写留言-->
+		<div class="wrap_a">
+			<!--<form action="weibo.php" method="get">-->
+				<textarea></textarea>
+				<div class="">
+				    <input type="submit" value="" id="submit"/>	
+				</div>
+			<!--</form>-->
+		</div>
+		<!--写留言-->
+		
+		<!--已写留言-->
+		<p id="liuyan">留言：</p>
+		<div class="wrap_b">
+			
+		</div>
+		<!--已写留言-->
+	</body>
+	<script type="text/javascript">
+		submit.onclick=function(){
+			
+			//获取元素
+//			var oInput=document.querySelector("textarea");
+//			var wrap_b=document.querySelector(".wrap_b");
+			var oInput=document.getElementsByTagName("textarea")[0];
+			var wrap_b=document.getElementsByClassName('wrap_b')[0];
+			
+			//创建元素
+			var oDiv_txt=document.createElement("div");
+			var oDiv_time=document.createElement("div");
+			var oDiv_cz=document.createElement("div");
+			var oDiv_float=document.createElement("div");
+			var oDiv_img1=document.createElement("div");
+			var oDiv_img2=document.createElement("div");
+			var oDiv_img3=document.createElement("div");
+			var oSpan=document.createElement("span");
+			
+			//追加类名
+			oDiv_txt.setAttribute("class","add");
+			oDiv_time.setAttribute("class","time");
+			oDiv_cz.setAttribute("id","q");
+			oDiv_float.setAttribute("class","float");
+			oDiv_img1.setAttribute("class","img1");
+			oDiv_img2.setAttribute("class","img2");
+			oDiv_img3.setAttribute("class","img3");
+			oSpan.setAttribute("class","delete");
+			
+			//赋值
+			oDiv_txt.innerHTML=oInput.value;
+			oSpan.innerText="delete";
+			var time=new Date().toLocaleString()
+			oDiv_time.innerText=time;
+            
+			//追加
+			wrap_b.appendChild(oDiv_txt);
+			oDiv_txt.appendChild(oDiv_time);
+			oDiv_txt.appendChild(oDiv_cz);
+			oDiv_cz.appendChild(oDiv_float);
+			oDiv_float.appendChild(oDiv_img1);
+			oDiv_float.appendChild(oDiv_img2);
+			oDiv_float.appendChild(oDiv_img3);
+			oDiv_float.appendChild(oSpan);
+			console.log(wrap_b);
+			
+			
+			//删除操作
+			console.log(oSpan);
+			oSpan.onclick=function(){
+				wrap_b.removeChild(this.parentNode.parentNode.parentNode);
+			}
+			
+			console.log(oDiv_txt.length)
+			//显示页数
+//			if(oDiv_txt.length==3){
+//				var count=
+//			}
+		}
+		
+		
+	</script>
+</html>

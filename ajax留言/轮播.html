@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery-2.1.4.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/swiper.min.js" type="text/javascript" charset="utf-8"></script>
+	    <link rel="stylesheet" type="text/css" href="css/swiper.min.css"/>
+		<style type="text/css">
+			.swiper-container{width: 100%;}
+			.swiper-container img{width: 100%;}
+			
+		</style>
+	</head>
+	<body>
+		<div class="swiper-container">
+			<div class="swiper-wrapper">
+				
+			</div>
+		</div>
+		
+		
+	</body>
+	<script type="text/javascript">
+		$.ajax({
+			type:"get",
+			url:"http://127.0.0.1:8725",
+			dataType:"json",
+			success:function(data){
+				var str="";
+				
+//				for(var temp of data.img){
+//					str+='<div class="swiper-slide">'
+//					+'<img src="'+temp.src+'"/>'
+//					+'<span>装修偶开卷考</span>'
+//				+'</div>'
+//              }
+				for(var temp of data.img){
+					str+=`<div class="swiper-slide">
+						<img src=temp.src/>
+						<span>装修偶开卷考</span>
+					</div>`
+                }
+//              for(var i=0; i<data.img.length; i++){
+//                 str+='<div class="swiper-slide">'
+//					+'<img src="'+data.img[i].src+'"/>'
+//					+'<span>装修偶开卷考</span>'
+//				+'</div>'
+//				}
+				$(".swiper-wrapper").append(str);
+				var sw=new Swiper(".swiper-container",{
+					autoplay:2000,
+				})
+			}
+		});
+		
+		
+	</script>
+</html>
